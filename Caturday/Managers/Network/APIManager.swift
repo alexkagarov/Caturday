@@ -24,25 +24,48 @@ class APIManager {
     var apikey: String {
         return "04b2b673-2732-4f20-b65e-39163f0f7ea0"
     }
-    
+        
     // hiding the initializer and initializing the "shared" property for singleton
     static let shared = APIManager()
     private init() {}
     
     // common wrapper for all upcoming network requests
-    func sendRequest(urlString: String, method: HTTPMethod, success: ((Data)->Void)?, failure: ((Error)->Void)?) {
+    func sendRequest(urlString: String, page: Int?, limit: Int?, method: HTTPMethod, success: ((Data, Int)->Void)?, failure: ((Error)->Void)?) {
         let session = URLSession.shared
         
-        guard let url = URL(string: urlString) else { return }
+        var finalURLString = urlString
+        
+        if let page = page {
+            finalURLString += "?page=\(page)"
+        }
+        
+        if page != nil && limit != nil {
+            guard let limit = limit else {return}
+            finalURLString += "&limit=\(limit)"
+        }
+        
+        if page == nil && limit != nil {
+            guard let limit = limit else {return}
+            finalURLString += "?limit=\(limit)"
+        }
+        
+        guard let url = URL(string: finalURLString) else { return }
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
         urlRequest.setValue(apikey, forHTTPHeaderField: "x-api-key")
         
         let task = session.dataTask(with: urlRequest) { data, response, error in
-            if let data = data {
-                print("Success!")
-                success?(data)
+            if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                
+                guard let paginationCountHeader = response.allHeaderFields["pagination-count"] as? String else {return}
+                guard let paginationCountHeaderInt = Int(paginationCountHeader) else {return}
+                
+                if let data = data {
+                    print("[REQUEST] \(method.rawValue): \(finalURLString)")
+                    print("200 - Success!")
+                    success?(data, paginationCountHeaderInt)
+                }
             }
             
             if let error = error {
@@ -54,26 +77,42 @@ class APIManager {
         
         task.resume()
     }
-    
-    
 }
 
 extension APIManager {
-    func getImage(urlString: String, element: UIImageView) {
-        sendRequest(urlString: urlString, method: .get, success: { (data) in
-            DispatchQueue.main.async {
-                element.image = UIImage(data: data)
-            }
+    func getImage(urlString: String, success: ((UIImage)->Void)?) {
+        sendRequest(urlString: urlString, page: nil, limit: 1, method: .get, success: { (data, paginationCount) in
+            success?(UIImage(data: data)!)
         }, failure: { (error) in
             print(error)
         })
     }
     
-    func getBreeds(success: ((Data)->Void)?, failure: ((String)->Void)?) {
+    func getImageURL(breedID: String, success: ((Data)->Void)?) {
+        let url = URLs.Server + URLs.Images
+        
+        sendRequest(urlString: url, page: 0, limit: 1, method: .get, success: { (data, paginationCount) in
+            success?(data)
+        }, failure: { (error) in
+            print(error.localizedDescription)
+        })
+    }
+    
+    func getBreeds(limit: Int, success: ((Data, Int)->Void)?, failure: ((String)->Void)?) {
         let url = URLs.Server + URLs.Breeds
         
-        sendRequest(urlString: url, method: .get, success: { (data) in
-            success?(data)
+        sendRequest(urlString: url, page: nil, limit: limit, method: .get, success: { (data, paginationCount) in
+            success?(data, paginationCount)
+        }, failure: { (error) in
+            failure?(error.localizedDescription)
+        })
+    }
+    
+    func getMoreBreeds(page: Int, limit: Int, success: ((Data, Int)->Void)?, failure: ((String)->Void)?) {
+        let url = URLs.Server + URLs.Breeds
+        
+        sendRequest(urlString: url, page: page, limit: limit, method: .get, success: { (data, paginationCount) in
+            success?(data, paginationCount)
         }, failure: { (error) in
             failure?(error.localizedDescription)
         })

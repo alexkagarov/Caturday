@@ -14,3 +14,7 @@ struct URLs {
     static let Breeds = "/breeds"
     static let Images = "/images/search"
 }
+
+struct Segues {
+    static let ToSingleBreed = "ToSingleBreedSegue"
+}

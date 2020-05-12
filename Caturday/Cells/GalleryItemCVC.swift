@@ -9,5 +9,5 @@
 import UIKit
 
 class GalleryItemCVC: UICollectionViewCell {
-    
+    @IBOutlet weak var imageView: UIImageView!
 }
