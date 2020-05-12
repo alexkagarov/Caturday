@@ -1,18 +1,17 @@
 //
-//  CatalogVC.swift
+//  TabBarVC.swift
 //  Caturday
 //
-//  Created by Oleksii Kaharov on 5/9/20.
+//  Created by Oleksii Kaharov on 5/10/20.
 //  Copyright © 2020 hialex. All rights reserved.
 //
 
 import UIKit
 
-class CatalogVC: UIViewController {
-    
+class TabBarVC: UITabBarController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-    
+
 }

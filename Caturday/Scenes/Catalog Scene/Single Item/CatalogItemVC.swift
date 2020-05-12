@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CatalogItemVC.swift
 //  Caturday
 //
 //  Created by Oleksii Kaharov on 5/9/20.
@@ -8,13 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CatalogItemVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
 
+    }
+    
 
 }
-
