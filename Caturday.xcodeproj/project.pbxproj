@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F520D2724719F9C007FC58C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520D2624719F9B007FC58C /* SceneDelegate.swift */; };
 		441C2CC52468125800D953F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441C2CC42468125800D953F7 /* Constants.swift */; };
 		441C2CC82468759E00D953F7 /* TabBarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441C2CC72468759E00D953F7 /* TabBarVM.swift */; };
 		441C2CCA246875BB00D953F7 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441C2CC9246875BB00D953F7 /* TabBarVC.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F520D2624719F9B007FC58C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1FC35FBB24719DF000089737 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		441C2CC42468125800D953F7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		441C2CC72468759E00D953F7 /* TabBarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVM.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				444F8AD5246709BA005112F5 /* AppDelegate.swift */,
 				1FC35FBB24719DF000089737 /* Info.plist */,
 				441C2CC42468125800D953F7 /* Constants.swift */,
+				1F520D2624719F9B007FC58C /* SceneDelegate.swift */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				44FFE125246B2E2E00BD34C4 /* FloatBreedCategory.swift in Sources */,
 				444F8AFD246721EE005112F5 /* CatalogItemVM.swift in Sources */,
 				44FFE11F246B25A800BD34C4 /* CatalogItemDescrTVC.swift in Sources */,
+				1F520D2724719F9C007FC58C /* SceneDelegate.swift in Sources */,
 				444F8B072467226F005112F5 /* PhotoGalleryVM.swift in Sources */,
 				444F8AF524672010005112F5 /* CatalogVC.swift in Sources */,
 				441C2CD924687E9300D953F7 /* GalleryItemCVC.swift in Sources */,
