@@ -13,5 +13,5 @@ protocol TabBarVMProtocol {
 }
 
 class TabBarVM: TabBarVMProtocol {
-    
+    var names = ["Cat-a-log", "Cat-a-gram", "Cat-a-quiz"]
 }

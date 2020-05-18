@@ -7,11 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SinglePhotoVMProtocol {
-    
+    var image: UIImage { get }
 }
 
 class SinglePhotoVM: SinglePhotoVMProtocol {
+    var image: UIImage
     
+    init(image: UIImage) {
+        self.image = image
+    }
 }

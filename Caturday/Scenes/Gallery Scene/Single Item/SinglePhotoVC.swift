@@ -10,9 +10,17 @@ import UIKit
 
 class SinglePhotoVC: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    
+    var viewModel: SinglePhotoVM!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        imageView.image = viewModel.image
     }
     
+    @IBAction func onCloseButtonTapped(_ sender: UIButton?) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

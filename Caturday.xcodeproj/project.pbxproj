@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F520D2724719F9C007FC58C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520D2624719F9B007FC58C /* SceneDelegate.swift */; };
+		1F520D292471B83F007FC58C /* CatCollectionImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F520D282471B83F007FC58C /* CatCollectionImageModel.swift */; };
 		441C2CC52468125800D953F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441C2CC42468125800D953F7 /* Constants.swift */; };
 		441C2CC82468759E00D953F7 /* TabBarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441C2CC72468759E00D953F7 /* TabBarVM.swift */; };
 		441C2CCA246875BB00D953F7 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441C2CC9246875BB00D953F7 /* TabBarVC.swift */; };
@@ -18,7 +19,6 @@
 		441C2CD524687E2C00D953F7 /* CatalogTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441C2CD424687E2C00D953F7 /* CatalogTVC.swift */; };
 		441C2CD924687E9300D953F7 /* GalleryItemCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441C2CD824687E9300D953F7 /* GalleryItemCVC.swift */; };
 		444F8AD6246709BA005112F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F8AD5246709BA005112F5 /* AppDelegate.swift */; };
-		444F8ADA246709BA005112F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F8AD9246709BA005112F5 /* ViewController.swift */; };
 		444F8ADF246709BD005112F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 444F8ADE246709BD005112F5 /* Assets.xcassets */; };
 		444F8AE2246709BD005112F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 444F8AE0246709BD005112F5 /* LaunchScreen.storyboard */; };
 		444F8AF024670CC5005112F5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F8AEF24670CC5005112F5 /* APIManager.swift */; };
@@ -45,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		1F520D2624719F9B007FC58C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1F520D282471B83F007FC58C /* CatCollectionImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCollectionImageModel.swift; sourceTree = "<group>"; };
 		1FC35FBB24719DF000089737 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		441C2CC42468125800D953F7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		441C2CC72468759E00D953F7 /* TabBarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVM.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		441C2CD824687E9300D953F7 /* GalleryItemCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemCVC.swift; sourceTree = "<group>"; };
 		444F8AD2246709BA005112F5 /* Caturday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Caturday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444F8AD5246709BA005112F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		444F8AD9246709BA005112F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		444F8ADE246709BD005112F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		444F8AE1246709BD005112F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		444F8AEF24670CC5005112F5 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -136,7 +136,6 @@
 				441C2CD324687E0300D953F7 /* Cells */,
 				444F8AEA24670C81005112F5 /* Scenes */,
 				444F8AE924670C6D005112F5 /* Storyboards */,
-				444F8AD9246709BA005112F5 /* ViewController.swift */,
 				444F8ADE246709BD005112F5 /* Assets.xcassets */,
 			);
 			path = Caturday;
@@ -184,6 +183,7 @@
 				44FFE122246B2DC100BD34C4 /* BoolBreedCategory.swift */,
 				44FFE124246B2E2E00BD34C4 /* FloatBreedCategory.swift */,
 				44FFE126246B329400BD34C4 /* BreedImageModel.swift */,
+				1F520D282471B83F007FC58C /* CatCollectionImageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -360,8 +360,8 @@
 				444F8B0924672291005112F5 /* SinglePhotoVC.swift in Sources */,
 				444F8AF024670CC5005112F5 /* APIManager.swift in Sources */,
 				44FFE121246B282B00BD34C4 /* SingleBreedModel.swift in Sources */,
-				444F8ADA246709BA005112F5 /* ViewController.swift in Sources */,
 				444F8B0324672234005112F5 /* QuizVM.swift in Sources */,
+				1F520D292471B83F007FC58C /* CatCollectionImageModel.swift in Sources */,
 				441C2CD524687E2C00D953F7 /* CatalogTVC.swift in Sources */,
 				44FFE127246B329400BD34C4 /* BreedImageModel.swift in Sources */,
 				441C2CC82468759E00D953F7 /* TabBarVM.swift in Sources */,

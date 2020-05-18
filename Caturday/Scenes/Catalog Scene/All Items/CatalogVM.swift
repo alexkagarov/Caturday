@@ -24,7 +24,7 @@ extension CatalogVM {
     func getAllBreeds(success: (()->Void)?) {
         breedsPage = 0
         breedsCount = 0
-        APIManager.shared.getBreeds(limit: paginationLimit, success: { (data, paginationCount) in
+        APIManager.shared.getItems(type: URLs.Breeds, limit: paginationLimit, success: { (data, paginationCount) in
             self.breedsCount = paginationCount
             
             let decoder = JSONDecoder()
@@ -45,7 +45,7 @@ extension CatalogVM {
     func getMoreBreeds(success: (()->Void)?) {
         breedsPage += 1
         
-        APIManager.shared.getMoreBreeds(page: breedsPage, limit: paginationLimit,success: { (data, paginationCount) in
+        APIManager.shared.getMoreItems(type: URLs.Breeds, page: breedsPage, limit: paginationLimit,success: { (data, paginationCount) in
             self.breedsCount = paginationCount
             
             let decoder = JSONDecoder()
@@ -63,24 +63,19 @@ extension CatalogVM {
             print(error)
         })
     }
-    
-    func getBreedImage(id: String, success: (()->Void)?) {
-        
-    }
 }
 
 extension CatalogVM {
-    func getImageURL(breedID: String, success: ((BreedImageModel)->Void)?) {
+    func getImageURL(breedID: String, success: ((ImageModel)->Void)?) {
         APIManager.shared.getImageURL(breedID: breedID, success: { (data) in
             let decoder = JSONDecoder()
             
             do {
-                let decodedImgURL = try decoder.decode([BreedImageModel].self, from: data)
+                let decodedImgURL = try decoder.decode([ImageModel].self, from: data)
                 success?(decodedImgURL.first!)
             } catch let error {
                 print(error)
             }
         })
-            
     }
 }

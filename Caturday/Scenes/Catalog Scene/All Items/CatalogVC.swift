@@ -154,22 +154,22 @@ extension CatalogVC {
             progCats.append(progCat)
         }
         
-        var breedImageModel = BreedImageModel()
+        var breedImageModel = ImageModel()
         
         if let id = breedModel.id {
-            let singleModel = SingleBreedModel(name: name, description: desc, image: breedImageModel, boolCats: boolCats, progCats: progCats)
+//            let singleModel = SingleBreedModel(name: name, description: desc, image: breedImageModel, boolCats: boolCats, progCats: progCats)
 
-            self.selectedCellVM = CatalogItemVM(model: singleModel)
-            success?()
+//            self.selectedCellVM = CatalogItemVM(model: singleModel)
+//            success?()
             // TODO:
-//            viewModel.getImageURL(breedID: id, success: { (data) in
-//                breedImageModel = data
-//
-//                let singleModel = SingleBreedModel(name: name, description: desc, image: breedImageModel, boolCats: boolCats, progCats: progCats)
-//
-//                self.selectedCellVM = CatalogItemVM(model: singleModel)
-//                success?()
-//            })
+            viewModel.getImageURL(breedID: id, success: { (data) in
+                breedImageModel = data
+
+                let singleModel = SingleBreedModel(name: name, description: desc, imageURLObject: breedImageModel, boolCats: boolCats, progCats: progCats)
+
+                self.selectedCellVM = CatalogItemVM(model: singleModel)
+                success?()
+            })
         }
     }
 }
@@ -183,11 +183,11 @@ extension CatalogVC: UITableViewDelegate {
         
         let selectedBreed = viewModel.breeds[indexPath.row]
         
-//        if let breed = cell.breed {
-            prepareVM(breedModel: selectedBreed, success: {
+        prepareVM(breedModel: selectedBreed, success: {
+            DispatchQueue.main.async {
                 self.performSegue(withIdentifier: Segues.ToSingleBreed, sender: self)
-            })
-//        }
+            }
+        })
     }
 }
 
@@ -205,7 +205,7 @@ extension CatalogVC: UITableViewDataSource {
             cell.cellLabel.text = breed.name
         }
         
-        if indexPath.row == viewModel.breeds.count - 1 {
+        if indexPath.row == viewModel.breeds.count - 1 && viewModel.breeds.count < viewModel.breedsCount {
             viewModel.getMoreBreeds(success: {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()

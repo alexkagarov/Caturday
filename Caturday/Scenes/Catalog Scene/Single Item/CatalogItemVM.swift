@@ -22,12 +22,10 @@ class CatalogItemVM: CatalogItemVMProtocol {
 }
 
 extension CatalogItemVM {
-    func setImage(url: String, element: UIImageView) {
-        DispatchQueue.main.async {
-            APIManager.shared.getImage(urlString: url, success: { (image) in
-                element.image = image
-            })
-        }
-        
+    func getImage(url: String, success: (()->Void)?) {
+        APIManager.shared.getImage(urlString: url, success: { (image) in
+            self.model.image = image
+            success?()
+        })
     }
 }

@@ -2,8 +2,8 @@
 //  SceneDelegate.swift
 //  Caturday
 //
-//  Created by Cryptoshell on 17.05.2020.
-//  Copyright © 2020 Cryptoshell. All rights reserved.
+//  Created by Oleksii Kaharov on 17.05.2020.
+//  Copyright © 2020 hialex. All rights reserved.
 //
 
 import UIKit
@@ -12,7 +12,6 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.

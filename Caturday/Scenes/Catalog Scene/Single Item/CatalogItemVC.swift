@@ -12,11 +12,12 @@ class CatalogItemVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel: CatalogItemVM?
+    var viewModel: CatalogItemVM!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "\(viewModel?.model.name ?? "")"
     }
 }
 
@@ -44,12 +45,13 @@ extension CatalogItemVC: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as? CatalogItemImageTVC else { return UITableViewCell() }
             
-            DispatchQueue.main.async {
-                cell.catImage.image = UIImage(named: "push-\(Int.random(in: 0...4))")
+            if let vm = viewModel, let url = vm.model.imageURLObject.url, vm.model.image == UIImage(named: "Cat-icon") {
+                vm.getImage(url: url, success: {
+                    DispatchQueue.main.async {
+                        cell.catImage.image = self.viewModel.model.image
+                    }
+                })
             }
-//            if let vm = viewModel, let url = vm.model.image.url {
-//                vm.setImage(url: url, element: cell.catImage)
-//            }
             
             return cell
         case 1:

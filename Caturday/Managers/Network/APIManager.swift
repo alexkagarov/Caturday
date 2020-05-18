@@ -8,6 +8,7 @@
 
 import Foundation
 import WebKit
+import UIKit
 
 /*
  I'm going to use this singleton instance to perform network requests across the app
@@ -30,7 +31,7 @@ class APIManager {
     private init() {}
     
     // common wrapper for all upcoming network requests
-    func sendRequest(urlString: String, page: Int?, limit: Int?, method: HTTPMethod, success: ((Data, Int)->Void)?, failure: ((Error)->Void)?) {
+    func sendRequest(urlString: String, page: Int?, limit: Int?, query: String?, method: HTTPMethod, success: ((Data, Int)->Void)?, failure: ((Error)->Void)?) {
         let session = URLSession.shared
         
         var finalURLString = urlString
@@ -42,6 +43,10 @@ class APIManager {
         if page != nil && limit != nil {
             guard let limit = limit else {return}
             finalURLString += "&limit=\(limit)"
+            
+            if let query = query {
+                finalURLString += "&breed_id=\(query)"
+            }
         }
         
         if page == nil && limit != nil {
@@ -55,11 +60,11 @@ class APIManager {
         urlRequest.httpMethod = method.rawValue
         urlRequest.setValue(apikey, forHTTPHeaderField: "x-api-key")
         
-        let task = session.dataTask(with: urlRequest) { data, response, error in
+        session.dataTask(with: urlRequest) { data, response, error in
             if let response = response as? HTTPURLResponse, response.statusCode == 200 {
                 
-                guard let paginationCountHeader = response.allHeaderFields["pagination-count"] as? String else {return}
-                guard let paginationCountHeaderInt = Int(paginationCountHeader) else {return}
+                guard let paginationCountHeader = response.allHeaderFields["pagination-count"] as? String else { return }
+                guard let paginationCountHeaderInt = Int(paginationCountHeader) else { return }
                 
                 if let data = data {
                     print("[REQUEST] \(method.rawValue): \(finalURLString)")
@@ -73,16 +78,67 @@ class APIManager {
                 failure?(error)
                 return
             }
-        }
+        }.resume()
+    }
+    
+    func sendRequestForImage(urlString: String, success: ((Data)->Void)?, failure: ((Error)->Void)?) {
+        guard let url = URL(string: urlString) else { return }
         
-        task.resume()
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = HTTPMethod.get.rawValue
+        urlRequest.setValue(apikey, forHTTPHeaderField: "x-api-key")
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: urlRequest) { data, response, error in
+            if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                
+                if let data = data {
+                    print("[IMAGE REQUEST]: \(urlString)")
+                    print("200 - Success!")
+                    success?(data)
+                }
+            }
+            
+            if let error = error {
+                print("Error! \(error.localizedDescription)")
+                failure?(error)
+                return
+            }
+        }.resume()
+    }
+}
+
+extension APIManager {
+    func getItems(type: String, limit: Int, success: ((Data, Int)->Void)?, failure: ((String)->Void)?) {
+        let url = URLs.Server + type
+        
+        sendRequest(urlString: url, page: nil, limit: limit, query: nil, method: .get, success: { (data, paginationCount) in
+            success?(data, paginationCount)
+        }, failure: { (error) in
+            failure?(error.localizedDescription)
+        })
+    }
+    
+    func getMoreItems(type: String, page: Int, limit: Int, success: ((Data, Int)->Void)?, failure: ((String)->Void)?) {
+        let url = URLs.Server + type
+        
+        sendRequest(urlString: url, page: page, limit: limit, query: nil, method: .get, success: { (data, paginationCount) in
+            success?(data, paginationCount)
+        }, failure: { (error) in
+            failure?(error.localizedDescription)
+        })
     }
 }
 
 extension APIManager {
     func getImage(urlString: String, success: ((UIImage)->Void)?) {
-        sendRequest(urlString: urlString, page: nil, limit: 1, method: .get, success: { (data, paginationCount) in
-            success?(UIImage(data: data)!)
+        sendRequestForImage(urlString: urlString, success: { (data) in
+            guard let image = UIImage(data: data) else { return }
+            guard let compressedImageData = image.jpegData(compressionQuality: 0.3) else { return }
+            guard let compressedImage = UIImage(data: compressedImageData) else { return }
+            
+            success?(compressedImage)
         }, failure: { (error) in
             print(error)
         })
@@ -91,30 +147,12 @@ extension APIManager {
     func getImageURL(breedID: String, success: ((Data)->Void)?) {
         let url = URLs.Server + URLs.Images
         
-        sendRequest(urlString: url, page: 0, limit: 1, method: .get, success: { (data, paginationCount) in
+        sendRequest(urlString: url, page: 0, limit: 1, query: breedID, method: .get, success: { (data, paginationCount) in
             success?(data)
         }, failure: { (error) in
             print(error.localizedDescription)
         })
     }
     
-    func getBreeds(limit: Int, success: ((Data, Int)->Void)?, failure: ((String)->Void)?) {
-        let url = URLs.Server + URLs.Breeds
-        
-        sendRequest(urlString: url, page: nil, limit: limit, method: .get, success: { (data, paginationCount) in
-            success?(data, paginationCount)
-        }, failure: { (error) in
-            failure?(error.localizedDescription)
-        })
-    }
     
-    func getMoreBreeds(page: Int, limit: Int, success: ((Data, Int)->Void)?, failure: ((String)->Void)?) {
-        let url = URLs.Server + URLs.Breeds
-        
-        sendRequest(urlString: url, page: page, limit: limit, method: .get, success: { (data, paginationCount) in
-            success?(data, paginationCount)
-        }, failure: { (error) in
-            failure?(error.localizedDescription)
-        })
-    }
 }
