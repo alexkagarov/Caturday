@@ -20,7 +20,7 @@ protocol SingleBreedModelProtocol {
 
 class SingleBreedModel: SingleBreedModelProtocol {
     var name: String
-    var image = UIImage(named: "Cat-icon")!
+    var image = UIImage()
     var description: String
     var imageURLObject: ImageModel
     var boolCats: [BoolBreedCategoryProtocol]

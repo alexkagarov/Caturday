@@ -17,6 +17,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="kinda-black-to-kinda-white"/>
+                        <color key="selectedImageTintColor" name="kinda-black-to-kinda-white"/>
                     </tabBar>
                     <connections>
                         <segue destination="tXd-O8-1EO" kind="relationship" relationship="viewControllers" id="1F1-4a-0sR"/>

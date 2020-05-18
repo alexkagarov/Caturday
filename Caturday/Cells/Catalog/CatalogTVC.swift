@@ -10,9 +10,5 @@ import UIKit
 
 class CatalogTVC: UITableViewCell {
 
-    // MARK: - IBOutlets
     @IBOutlet weak var cellLabel: UILabel!
-
-    // MARK: - Variables
-    var breed: BreedModel?
 }

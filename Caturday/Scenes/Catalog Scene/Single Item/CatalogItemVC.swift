@@ -10,10 +10,13 @@ import UIKit
 
 class CatalogItemVC: UIViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: - Variables
     var viewModel: CatalogItemVM!
     
+    // MARK: - VC Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +24,7 @@ class CatalogItemVC: UIViewController {
     }
 }
 
+// MARK: - Table View Data Source VC Extension
 extension CatalogItemVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
@@ -45,12 +49,19 @@ extension CatalogItemVC: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as? CatalogItemImageTVC else { return UITableViewCell() }
             
-            if let vm = viewModel, let url = vm.model.imageURLObject.url, vm.model.image == UIImage(named: "Cat-icon") {
-                vm.getImage(url: url, success: {
-                    DispatchQueue.main.async {
-                        cell.catImage.image = self.viewModel.model.image
-                    }
-                })
+            if viewModel.model.image != UIImage() {
+                cell.catImage.image = viewModel.model.image
+            } else {
+                if let vm = viewModel, let url = vm.model.imageURLObject.url {
+                    vm.getImage(url: url, success: {
+                        DispatchQueue.main.async {
+                            cell.catImage.isHidden = false
+                            cell.loadingView.isHidden = true
+                            cell.catImage.image = self.viewModel.model.image
+                            tableView.reloadData()
+                        }
+                    })
+                }
             }
             
             return cell
@@ -58,7 +69,7 @@ extension CatalogItemVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as? CatalogItemDescrTVC else { return UITableViewCell() }
             
             if let vm = viewModel {
-                cell.label.text = vm.model.description
+                cell.descrLabel.text = vm.model.description
             }
             
             return cell
@@ -83,5 +94,21 @@ extension CatalogItemVC: UITableViewDataSource {
         default:
             return UITableViewCell()
         }
+    }
+}
+
+extension CatalogItemVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            if viewModel.model.image != UIImage() {
+                let aspectRatio = viewModel.model.image.size.width / viewModel.model.image.size.height
+                
+                return tableView.frame.width / aspectRatio
+            } else {
+                return 100
+            }
+        }
+        
+        return UITableView.automaticDimension
     }
 }

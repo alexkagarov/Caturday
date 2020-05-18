@@ -9,6 +9,6 @@
 import UIKit
 
 class CatalogItemImageTVC: UITableViewCell {
-    
+    @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var catImage: UIImageView!
 }

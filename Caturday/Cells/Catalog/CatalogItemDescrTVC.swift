@@ -10,5 +10,5 @@ import UIKit
 
 class CatalogItemDescrTVC: UITableViewCell {
 
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var descrLabel: UILabel!
 }

@@ -18,7 +18,7 @@ class PhotoGalleryVM: PhotoGalleryVMProtocol {
     
     var imagesPage = 0
     var imagesCount = 0
-    var paginationLimit = 20
+    var paginationLimit = 21
 }
 
 extension PhotoGalleryVM {

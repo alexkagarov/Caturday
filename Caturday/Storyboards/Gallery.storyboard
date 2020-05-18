@@ -58,7 +58,7 @@
                                                     <rect key="frame" x="52.5" y="52.5" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>
-                                            <color key="backgroundColor" name="kinda-black-to-kinda-white"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="6F7-bH-lAh" firstAttribute="leading" secondItem="RtB-wg-H9n" secondAttribute="leading" id="3Sb-tr-WLM"/>
                                                 <constraint firstItem="pjv-fx-U2I" firstAttribute="centerY" secondItem="RtB-wg-H9n" secondAttribute="centerY" id="Jrx-E8-jLJ"/>
@@ -69,8 +69,8 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="activityIndicator" destination="pjv-fx-U2I" id="DsT-7J-tpV"/>
                                             <outlet property="imageView" destination="6F7-bH-lAh" id="0vd-pR-gRv"/>
+                                            <outlet property="loadingIndicator" destination="pjv-fx-U2I" id="DsT-7J-tpV"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -111,10 +111,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close-button-png" translatesAutoresizingMaskIntoConstraints="NO" id="pv9-Od-eXs">
-                                <rect key="frame" x="337.5" y="12.5" width="25" height="25"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="340" y="15" width="20" height="20"/>
+                                <color key="tintColor" name="kinda-black-to-kinda-white"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="ruz-w3-7UY"/>
+                                    <constraint firstAttribute="width" constant="20" id="ruz-w3-7UY"/>
                                     <constraint firstAttribute="width" secondItem="pv9-Od-eXs" secondAttribute="height" multiplier="1:1" id="xS0-kN-uVC"/>
                                 </constraints>
                             </imageView>
@@ -130,7 +130,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" name="kinda-white-to-kinda-black"/>
                         <constraints>
                             <constraint firstItem="Ol3-Wr-3i6" firstAttribute="top" secondItem="JQr-fJ-0S3" secondAttribute="top" id="0Fz-ah-hLF"/>
                             <constraint firstItem="JQr-fJ-0S3" firstAttribute="trailing" secondItem="Ol3-Wr-3i6" secondAttribute="trailing" id="A80-8j-ut9"/>
@@ -156,7 +156,10 @@
     <resources>
         <image name="close-button-png" width="980" height="980"/>
         <namedColor name="kinda-black-to-kinda-white">
-            <color red="0.1404630829015544" green="0.1404630829015544" blue="0.1404630829015544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14000000059604645" green="0.14000000059604645" blue="0.14000000059604645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="kinda-white-to-kinda-black">
+            <color red="0.89999997615814209" green="0.89999997615814209" blue="0.89999997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

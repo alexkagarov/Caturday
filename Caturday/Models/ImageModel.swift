@@ -1,5 +1,5 @@
 //
-//  BreedImageModel.swift
+//  ImageModel.swift
 //  Caturday
 //
 //  Created by Oleksii Kaharov on 5/12/20.

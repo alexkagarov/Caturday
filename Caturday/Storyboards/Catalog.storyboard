@@ -33,8 +33,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Jp-Mz-eOy">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYV-bX-VVj" userLabel="Loading View">
+                                <rect key="frame" x="137.5" y="321" width="100" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eP3-Ry-OD5">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="9Ed-j2-1FX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="kinda-black-to-kinda-white"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="xTU-UN-ANc">
+                                        <rect key="frame" x="75" y="0.0" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="JiR-GG-3cI"/>
+                                            <constraint firstAttribute="width" constant="25" id="tg7-co-tCS"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="eP3-Ry-OD5" secondAttribute="bottom" id="84V-nr-wRV"/>
+                                    <constraint firstItem="xTU-UN-ANc" firstAttribute="leading" secondItem="eP3-Ry-OD5" secondAttribute="trailing" id="B1G-Wb-Zmu"/>
+                                    <constraint firstItem="eP3-Ry-OD5" firstAttribute="leading" secondItem="eYV-bX-VVj" secondAttribute="leading" id="F3d-kB-vKO"/>
+                                    <constraint firstItem="xTU-UN-ANc" firstAttribute="centerY" secondItem="eP3-Ry-OD5" secondAttribute="centerY" id="UPL-qp-hyD"/>
+                                    <constraint firstAttribute="trailing" secondItem="xTU-UN-ANc" secondAttribute="trailing" id="VLG-WG-9DA"/>
+                                    <constraint firstItem="eP3-Ry-OD5" firstAttribute="top" secondItem="eYV-bX-VVj" secondAttribute="top" id="hZA-dz-DTM"/>
+                                </constraints>
+                            </view>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Jp-Mz-eOy">
+                                <rect key="frame" x="0.0" y="96" width="375" height="571"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CatalogCell" id="jZO-E1-d81" customClass="CatalogTVC" customModule="Caturday" customModuleProvider="target">
@@ -73,12 +103,20 @@
                             <constraint firstItem="2Jp-Mz-eOy" firstAttribute="leading" secondItem="xKK-XN-iaJ" secondAttribute="leading" id="BMg-PN-DWh"/>
                             <constraint firstItem="xKK-XN-iaJ" firstAttribute="bottom" secondItem="2Jp-Mz-eOy" secondAttribute="bottom" id="JQN-Zo-aEy"/>
                             <constraint firstItem="2Jp-Mz-eOy" firstAttribute="top" secondItem="xKK-XN-iaJ" secondAttribute="top" id="LAZ-sO-JF6"/>
+                            <constraint firstItem="eYV-bX-VVj" firstAttribute="centerX" secondItem="yGk-LZ-OT8" secondAttribute="centerX" id="pk0-bm-kMn"/>
                             <constraint firstItem="xKK-XN-iaJ" firstAttribute="trailing" secondItem="2Jp-Mz-eOy" secondAttribute="trailing" id="quy-Ga-Onk"/>
+                            <constraint firstItem="eYV-bX-VVj" firstAttribute="centerY" secondItem="yGk-LZ-OT8" secondAttribute="centerY" id="ty5-Nd-089"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xKK-XN-iaJ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Cat-a-log" id="fbB-C5-dQV"/>
+                    <navigationItem key="navigationItem" title="Cat-a-log" id="fbB-C5-dQV">
+                        <barButtonItem key="backBarButtonItem" title="Cat-a-log" id="0M4-UM-VAD">
+                            <color key="tintColor" name="kinda-black-to-kinda-white"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="loadingIndicator" destination="xTU-UN-ANc" id="r3p-gU-ETv"/>
+                        <outlet property="loadingView" destination="eYV-bX-VVj" id="4H6-Xk-etg"/>
                         <outlet property="tableView" destination="2Jp-Mz-eOy" id="f9M-vB-rhA"/>
                         <segue destination="Pna-EA-Vbn" kind="show" identifier="ToSingleBreedSegue" id="A2c-lc-fPA"/>
                     </connections>
@@ -99,36 +137,67 @@
                                 <rect key="frame" x="0.0" y="96" width="375" height="571"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageCell" id="zsw-RE-uOl" customClass="CatalogItemImageTVC" customModule="Caturday" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="375.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageCell" rowHeight="200" id="zsw-RE-uOl" customClass="CatalogItemImageTVC" customModule="Caturday" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zsw-RE-uOl" id="NMQ-8z-HR8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="375.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cat-icon" translatesAutoresizingMaskIntoConstraints="NO" id="cQ0-X2-Qdh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
-                                                    <color key="tintColor" name="kinda-black-to-kinda-white"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZx-nM-0Q2">
+                                                    <rect key="frame" x="144.5" y="87.5" width="86" height="25"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQ1-se-prZ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="61" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="eOq-bX-Tbx"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" name="kinda-black-to-kinda-white"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="xSr-Wu-0jD">
+                                                            <rect key="frame" x="61" y="0.0" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="0Hr-dm-sQh"/>
+                                                                <constraint firstAttribute="width" constant="25" id="APq-7h-2ag"/>
+                                                            </constraints>
+                                                            <color key="color" name="kinda-black-to-kinda-white"/>
+                                                        </activityIndicatorView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="cQ0-X2-Qdh" secondAttribute="height" multiplier="1:1" id="EBu-iZ-1LU"/>
+                                                        <constraint firstItem="xQ1-se-prZ" firstAttribute="leading" secondItem="ZZx-nM-0Q2" secondAttribute="leading" id="M4s-hn-IKq"/>
+                                                        <constraint firstItem="xQ1-se-prZ" firstAttribute="top" secondItem="ZZx-nM-0Q2" secondAttribute="top" id="MFu-j1-AVF"/>
+                                                        <constraint firstItem="xSr-Wu-0jD" firstAttribute="leading" secondItem="xQ1-se-prZ" secondAttribute="trailing" id="Whk-lM-na2"/>
+                                                        <constraint firstItem="xSr-Wu-0jD" firstAttribute="top" secondItem="ZZx-nM-0Q2" secondAttribute="top" id="mEX-5i-urq"/>
+                                                        <constraint firstAttribute="trailing" secondItem="xSr-Wu-0jD" secondAttribute="trailing" id="pBZ-ce-HMS"/>
+                                                        <constraint firstAttribute="bottom" secondItem="xSr-Wu-0jD" secondAttribute="bottom" id="r0Q-gp-CSL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="xQ1-se-prZ" secondAttribute="bottom" id="vgI-pY-V8u"/>
                                                     </constraints>
+                                                </view>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1800x1200_cat_relaxing_on_patio_other" translatesAutoresizingMaskIntoConstraints="NO" id="cQ0-X2-Qdh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                    <color key="tintColor" name="kinda-black-to-kinda-white"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="cQ0-X2-Qdh" firstAttribute="height" secondItem="NMQ-8z-HR8" secondAttribute="width" id="ApM-DW-4ZM"/>
-                                                <constraint firstAttribute="bottom" secondItem="cQ0-X2-Qdh" secondAttribute="bottom" id="f7c-Hk-9AM"/>
-                                                <constraint firstAttribute="trailing" secondItem="cQ0-X2-Qdh" secondAttribute="trailing" id="gTb-YP-l2H"/>
-                                                <constraint firstItem="cQ0-X2-Qdh" firstAttribute="leading" secondItem="NMQ-8z-HR8" secondAttribute="leading" id="ggn-HI-ia3"/>
-                                                <constraint firstItem="cQ0-X2-Qdh" firstAttribute="top" secondItem="NMQ-8z-HR8" secondAttribute="top" id="zNZ-Qf-83W"/>
+                                                <constraint firstItem="cQ0-X2-Qdh" firstAttribute="width" secondItem="NMQ-8z-HR8" secondAttribute="width" id="2Qc-a1-VWA"/>
+                                                <constraint firstItem="ZZx-nM-0Q2" firstAttribute="centerX" secondItem="NMQ-8z-HR8" secondAttribute="centerX" id="I7U-hF-tp7"/>
+                                                <constraint firstItem="ZZx-nM-0Q2" firstAttribute="centerY" secondItem="NMQ-8z-HR8" secondAttribute="centerY" id="J3l-Jp-l40"/>
+                                                <constraint firstItem="cQ0-X2-Qdh" firstAttribute="centerX" secondItem="NMQ-8z-HR8" secondAttribute="centerX" id="Qw6-hh-baH"/>
+                                                <constraint firstItem="cQ0-X2-Qdh" firstAttribute="top" secondItem="NMQ-8z-HR8" secondAttribute="top" id="i8Y-UX-Aiw"/>
+                                                <constraint firstAttribute="bottom" secondItem="cQ0-X2-Qdh" secondAttribute="bottom" id="ma8-VX-uTP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="catImage" destination="cQ0-X2-Qdh" id="9Fj-PZ-6GH"/>
+                                            <outlet property="loadingView" destination="ZZx-nM-0Q2" id="tb0-Rq-Ihf"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DescriptionCell" id="2X4-yg-VNC" customClass="CatalogItemDescrTVC" customModule="Caturday" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="403.5" width="375" height="36"/>
+                                        <rect key="frame" x="0.0" y="228" width="375" height="36"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2X4-yg-VNC" id="zyA-qZ-mjP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
@@ -149,11 +218,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="label" destination="SrH-F7-uS7" id="3rc-sz-X38"/>
+                                            <outlet property="descrLabel" destination="SrH-F7-uS7" id="3rc-sz-X38"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PercentageCell" rowHeight="74" id="KgK-P7-ypK" customClass="CatalogItemProgTVC" customModule="Caturday" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="439.5" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="264" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KgK-P7-ypK" id="l3H-Vv-Tt4">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
@@ -185,7 +254,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BooleanCell" id="X6k-Gr-QYX" customClass="CatalogItemBoolTVC" customModule="Caturday" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="513.5" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="338" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X6k-Gr-QYX" id="UNc-8O-U4z">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -247,9 +316,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Cat-icon" width="512" height="512"/>
+        <image name="1800x1200_cat_relaxing_on_patio_other" width="1800" height="1200"/>
         <namedColor name="kinda-black-to-kinda-white">
-            <color red="0.1404630829015544" green="0.1404630829015544" blue="0.1404630829015544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14000000059604645" green="0.14000000059604645" blue="0.14000000059604645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

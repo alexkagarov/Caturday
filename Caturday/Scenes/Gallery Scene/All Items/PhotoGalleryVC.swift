@@ -10,31 +10,31 @@ import UIKit
 
 class PhotoGalleryVC: UIViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: - Variables
     var viewModel: PhotoGalleryVM = PhotoGalleryVM()
     var selectedImage: UIImage?
     
+    // MARK: - VC Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.getImages(success: {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        })
+        if viewModel.images.count == 0 {
+            viewModel.getImages(success: {
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            })
+        }
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
-    
+    // MARK: - Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowSingleImage" {
             guard let destVC = segue.destination as? SinglePhotoVC else { return }
@@ -48,6 +48,7 @@ class PhotoGalleryVC: UIViewController {
     }
 }
 
+// MARK: - Collection View related extensions
 extension PhotoGalleryVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -63,12 +64,12 @@ extension PhotoGalleryVC: UICollectionViewDataSource {
         cell.imageView.image = viewModel.images[indexPath.item].image
         
         if cell.imageView.image == nil {
-            cell.activityIndicator.startAnimating()
+            cell.loadingIndicator.startAnimating()
             if let imageURL = viewModel.images[indexPath.item].imageURLObject.url {
                 viewModel.getImage(url: imageURL, success: { (image) in
                     DispatchQueue.main.async {
                         self.viewModel.images[indexPath.item].image = image
-                        cell.activityIndicator.stopAnimating()
+                        cell.loadingIndicator.stopAnimating()
                         collectionView.reloadItems(at: [indexPath])
                     }
                 })
@@ -113,7 +114,7 @@ extension PhotoGalleryVC: UICollectionViewDelegateFlowLayout {
         
         let screenWidth = UIScreen.main.bounds.width
         
-        let itemWidth = (screenWidth-3)/3
+        let itemWidth = (screenWidth/3) - 1
         
         return CGSize(width: itemWidth, height: itemWidth)
     }
