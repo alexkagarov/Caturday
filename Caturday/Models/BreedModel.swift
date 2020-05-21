@@ -11,6 +11,8 @@ import Foundation
 class BreedModel: Decodable {
     var id: String?
     var name: String?
+    var origin: String?
+    var altNames: String?
     var temperament: String?
     var lifeSpan: String?
     var description: String?

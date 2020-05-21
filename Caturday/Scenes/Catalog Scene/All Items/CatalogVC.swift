@@ -77,7 +77,11 @@ extension CatalogVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CatalogCell", for: indexPath) as? CatalogTVC else { return UITableViewCell() }
         
-        cell.cellLabel.text = viewModel.breeds[indexPath.row].name
+        let breed = viewModel.breeds[indexPath.row]
+        
+        if let name = breed.name, let countryCode = breed.countryCode {
+            cell.cellLabel.text = name + " " + viewModel.ISO2ToEmoji(countryCode)
+        }
         
         if indexPath.row == viewModel.breeds.count - 1 && viewModel.breeds.count < viewModel.breedsCount {
             viewModel.getMoreBreeds(success: {
