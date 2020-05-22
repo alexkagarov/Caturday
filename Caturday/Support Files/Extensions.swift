@@ -2,7 +2,7 @@
 //  Extensions.swift
 //  Caturday
 //
-//  Created by Cryptoshell on 21.05.2020.
+//  Created by Oleksii Kaharov on 21.05.2020.
 //  Copyright © 2020 hialex. All rights reserved.
 //
 

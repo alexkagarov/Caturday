@@ -2,7 +2,7 @@
 //  QuizStatsPopupVM.swift
 //  Caturday
 //
-//  Created by Cryptoshell on 22.05.2020.
+//  Created by Oleksii Kaharov on 22.05.2020.
 //  Copyright © 2020 hialex. All rights reserved.
 //
 
