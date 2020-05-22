@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuizOptionView" customModule="Caturday" customModuleProvider="target">
+            <connections>
+                <outlet property="actionButton" destination="JMn-eR-hgi" id="7eE-eB-Se0"/>
+                <outlet property="bgView" destination="lUV-Qz-R1M" id="fqn-0d-U4K"/>
+                <outlet property="buttonLabel" destination="ae0-Gi-3QA" id="TLZ-OC-m1J"/>
+                <outlet property="contentView" destination="V2E-y0-BB7" id="0YJ-32-gUW"/>
+            </connections>
+        </placeholder>
+        <view contentMode="scaleToFill" id="V2E-y0-BB7" userLabel="Content View">
+            <rect key="frame" x="0.0" y="0.0" width="447" height="195"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lUV-Qz-R1M" userLabel="Answer View">
+                    <rect key="frame" x="0.0" y="0.0" width="447" height="195"/>
+                    <color key="backgroundColor" name="kinda-white-to-kinda-black"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer 1" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ae0-Gi-3QA">
+                    <rect key="frame" x="24" y="0.0" width="399" height="195"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" name="kinda-black-to-kinda-white"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMn-eR-hgi">
+                    <rect key="frame" x="7" y="0.0" width="433" height="195"/>
+                    <connections>
+                        <action selector="onButtonTapped:" destination="-1" eventType="touchUpInside" id="6tK-BV-FLd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="lUV-Qz-R1M" secondAttribute="trailing" id="I5I-bO-9qg"/>
+                <constraint firstAttribute="bottom" secondItem="lUV-Qz-R1M" secondAttribute="bottom" id="JdX-YH-y1P"/>
+                <constraint firstItem="lUV-Qz-R1M" firstAttribute="top" secondItem="V2E-y0-BB7" secondAttribute="top" id="KkD-D3-Liz"/>
+                <constraint firstAttribute="trailing" secondItem="ae0-Gi-3QA" secondAttribute="trailing" constant="24" id="PtV-zg-BZN"/>
+                <constraint firstItem="ae0-Gi-3QA" firstAttribute="leading" secondItem="V2E-y0-BB7" secondAttribute="leading" constant="24" id="XVx-Qb-br0"/>
+                <constraint firstAttribute="bottom" secondItem="ae0-Gi-3QA" secondAttribute="bottom" id="bUP-ud-qdh"/>
+                <constraint firstItem="ae0-Gi-3QA" firstAttribute="top" secondItem="V2E-y0-BB7" secondAttribute="top" id="bvr-gx-l4t"/>
+                <constraint firstItem="JMn-eR-hgi" firstAttribute="width" secondItem="lUV-Qz-R1M" secondAttribute="width" multiplier="0.969112" id="iIA-r7-mYD"/>
+                <constraint firstItem="JMn-eR-hgi" firstAttribute="centerX" secondItem="lUV-Qz-R1M" secondAttribute="centerX" id="mI1-uR-mrS"/>
+                <constraint firstItem="lUV-Qz-R1M" firstAttribute="leading" secondItem="V2E-y0-BB7" secondAttribute="leading" id="qg6-Ra-Yl2"/>
+                <constraint firstItem="JMn-eR-hgi" firstAttribute="height" secondItem="lUV-Qz-R1M" secondAttribute="height" id="t3Q-al-y52"/>
+                <constraint firstItem="JMn-eR-hgi" firstAttribute="centerY" secondItem="lUV-Qz-R1M" secondAttribute="centerY" id="zSv-9T-DSF"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="130.40000000000001" y="138.0809595202399"/>
+        </view>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+    </objects>
+    <resources>
+        <namedColor name="kinda-black-to-kinda-white">
+            <color red="0.14000000059604645" green="0.14000000059604645" blue="0.14000000059604645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="kinda-white-to-kinda-black">
+            <color red="0.89999997615814209" green="0.89999997615814209" blue="0.89999997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

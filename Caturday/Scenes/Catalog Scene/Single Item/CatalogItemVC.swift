@@ -50,6 +50,7 @@ extension CatalogItemVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as? CatalogItemImageTVC else { return UITableViewCell() }
             
             if viewModel.model.image != UIImage() {
+                cell.catImage.isHidden = false
                 cell.catImage.image = viewModel.model.image
             } else {
                 if let vm = viewModel, let url = vm.model.imageURLObject.url {
@@ -101,9 +102,12 @@ extension CatalogItemVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             if viewModel.model.image != UIImage() {
-                let aspectRatio = viewModel.model.image.size.width / viewModel.model.image.size.height
-                
-                return tableView.frame.width / aspectRatio
+                if viewModel.model.image.size.height != 0 || viewModel.model.image.size.height != 0 {
+                    let aspectRatio = viewModel.model.image.size.width / viewModel.model.image.size.height
+                    return tableView.frame.width / aspectRatio
+                } else {
+                    return 100
+                }
             } else {
                 return 100
             }

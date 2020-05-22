@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CatalogVMProtocol {
     var breeds: [BreedModel] { get set }
@@ -82,6 +83,12 @@ extension CatalogVM {
             } catch let error {
                 print(error)
             }
+        })
+    }
+    
+    func getImageForBreed(breedID: String, success: ((UIImage)->Void)?) {
+        APIManager.shared.getSingleBreedImage(breedID: breedID, success: { (image) in
+            success?(image)
         })
     }
 }
@@ -216,14 +223,21 @@ extension CatalogVM {
         var breedImageModel = ImageModel()
         
         if let id = breedModel.id {
-            getImageURL(breedID: id, success: { (data) in
-                breedImageModel = data
-
+            getImageForBreed(breedID: id, success: { (image) in
                 let singleModel = SingleBreedModel(name: name, description: desc, imageURLObject: breedImageModel, boolCats: boolCats, progCats: progCats)
 
+                singleModel.image = image
                 self.selectedCellVM = CatalogItemVM(model: singleModel)
                 success?()
             })
+//            getImageURL(breedID: id, success: { (data) in
+//                breedImageModel = data
+//
+//                let singleModel = SingleBreedModel(name: name, description: desc, imageURLObject: breedImageModel, boolCats: boolCats, progCats: progCats)
+//
+//                self.selectedCellVM = CatalogItemVM(model: singleModel)
+//                success?()
+//            })
         }
     }
 }

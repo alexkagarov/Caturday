@@ -107,6 +107,39 @@ class APIManager {
             }
         }.resume()
     }
+    
+    func sendRequestForSingleBreedImage(urlString: String, breedID: String, success: ((UIImage)->Void)?, failure: ((Error)->Void)?) {
+        let session = URLSession.shared
+        
+        let finalURLString = urlString + "?size=med&mime_types=jpg&format=src&breed_id=\(breedID)"
+        
+        guard let url = URL(string: finalURLString) else { return }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = HTTPMethod.get.rawValue
+        urlRequest.setValue(apikey, forHTTPHeaderField: "x-api-key")
+        
+        session.dataTask(with: urlRequest) { data, response, error in
+            if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                
+                if let data = data {
+                    print("[IMAGE REQUEST]: \(finalURLString)")
+                    print("200 - Success!")
+                    if let image = UIImage(data: data) {
+                        guard let compressedDataImage = image.jpegData(compressionQuality: 0.3) else {return}
+                        guard let compressedImage = UIImage(data: compressedDataImage) else { return }
+                        success?(compressedImage)
+                    }
+                }
+            }
+            
+            if let error = error {
+                print("Error! \(error.localizedDescription)")
+                failure?(error)
+                return
+            }
+        }.resume()
+    }
 }
 
 extension APIManager {
@@ -154,5 +187,13 @@ extension APIManager {
         })
     }
     
-    
+    func getSingleBreedImage(breedID: String, success: ((UIImage)->Void)?) {
+        let url = URLs.Server + URLs.Images
+        
+        sendRequestForSingleBreedImage(urlString: url, breedID: breedID, success: { (image) in
+            success?(image)
+        }, failure: { (error) in
+            print(error.localizedDescription)
+        })
+    }
 }

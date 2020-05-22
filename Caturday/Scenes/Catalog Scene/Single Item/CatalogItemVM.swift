@@ -25,6 +25,7 @@ extension CatalogItemVM {
     func getImage(url: String, success: (()->Void)?) {
         APIManager.shared.getImage(urlString: url, success: { (image) in
             self.model.image = image
+            
             success?()
         })
     }

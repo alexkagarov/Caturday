@@ -18,3 +18,8 @@ struct URLs {
 struct Segues {
     static let ToSingleBreed = "ToSingleBreedSegue"
 }
+
+struct UDKeys {
+    static let AllGames = "UserDefaults.AllGamesCounter"
+    static let WonGames = "UserDefaults.WonGamesCounter"
+}
