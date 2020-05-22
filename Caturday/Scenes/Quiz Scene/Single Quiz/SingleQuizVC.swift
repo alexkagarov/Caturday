@@ -11,6 +11,8 @@ import UIKit
 class SingleQuizVC: UIViewController {
 
     // MARK: - IBOutlets
+    @IBOutlet weak var quizQuestionLabel: UILabel!
+    
     @IBOutlet weak var option1View: QuizOptionView!
     @IBOutlet weak var option2View: QuizOptionView!
     @IBOutlet weak var option3View: QuizOptionView!
@@ -40,6 +42,8 @@ class SingleQuizVC: UIViewController {
     
     // MARK: - Internal functions
     private func setupView() {
+        quizQuestionLabel.text = viewModel.quizModel.question
+        
         breedImage.image = viewModel.quizModel.image
         
         quizOptions.append(option1View)

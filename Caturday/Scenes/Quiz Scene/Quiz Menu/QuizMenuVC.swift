@@ -66,15 +66,15 @@ class QuizMenuVC: UIViewController {
     
     // MARK: - Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "StartQuizSegue" {
+        if segue.identifier == Segues.StartSingleQuiz {
             guard let destVC = segue.destination as? SingleQuizVC else { return }
             
-            let vm = SingleQuizVM(quizModel: viewModel.quiz)
+            let vm = SingleQuizVM(quizModel: self.viewModel.quiz)
             destVC.viewModel = vm
             destVC.delegate = self
         }
         
-        if segue.identifier == "ShowStatsPopUpSegue" {
+        if segue.identifier == Segues.ShowStatsPopUp {
             guard let destVC = segue.destination as? QuizStatsPopupVC else { return }
             
             let vm = QuizStatsPopupVM()
@@ -96,7 +96,7 @@ class QuizMenuVC: UIViewController {
             DispatchQueue.main.async {
                 self.startQuizBtn.isHidden = false
                 self.activityIndicator.isHidden = true
-                self.performSegue(withIdentifier: "StartQuizSegue", sender: self)
+                self.performSegue(withIdentifier: Segues.StartSingleQuiz, sender: self)
             }
         })
     }
@@ -104,7 +104,7 @@ class QuizMenuVC: UIViewController {
     @IBAction func onCheckStatsTapped(_ sender: UIButton?) {
         viewModel.setStatsFromUserDefaults()
         
-        performSegue(withIdentifier: "ShowStatsPopUpSegue", sender: self)
+        performSegue(withIdentifier: Segues.ShowStatsPopUp, sender: self)
     }
 }
 

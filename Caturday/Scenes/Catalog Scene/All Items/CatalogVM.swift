@@ -220,7 +220,7 @@ extension CatalogVM {
             progCats.append(progCat)
         }
         
-        var breedImageModel = ImageModel()
+        let breedImageModel = ImageModel()
         
         if let id = breedModel.id {
             getImageForBreed(breedID: id, success: { (image) in
@@ -230,14 +230,6 @@ extension CatalogVM {
                 self.selectedCellVM = CatalogItemVM(model: singleModel)
                 success?()
             })
-//            getImageURL(breedID: id, success: { (data) in
-//                breedImageModel = data
-//
-//                let singleModel = SingleBreedModel(name: name, description: desc, imageURLObject: breedImageModel, boolCats: boolCats, progCats: progCats)
-//
-//                self.selectedCellVM = CatalogItemVM(model: singleModel)
-//                success?()
-//            })
         }
     }
 }

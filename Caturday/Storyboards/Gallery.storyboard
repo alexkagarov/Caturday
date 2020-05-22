@@ -92,7 +92,7 @@
                     <navigationItem key="navigationItem" title="Cat-a-gram" id="Sxr-aS-Ays"/>
                     <connections>
                         <outlet property="collectionView" destination="XYu-P0-QdL" id="7sR-q7-jvg"/>
-                        <segue destination="LCy-l9-9JC" kind="presentation" identifier="ShowSingleImage" id="BO5-7Z-zBS"/>
+                        <segue destination="LCy-l9-9JC" kind="presentation" identifier="ShowSingleImageSegue" id="BO5-7Z-zBS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rsT-Vn-3f3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class QuizModel {
-    var question: String = "Can you guess the cat breed by this photo?"
+    var question: String = "Can you guess the cat breed by its random photo?"
     var answer: String = "a"
     var answerID: String = "lol"
     var options: [String] = ["a", "b", "c", "d"]

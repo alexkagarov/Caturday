@@ -36,7 +36,7 @@ class PhotoGalleryVC: UIViewController {
     
     // MARK: - Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowSingleImage" {
+        if segue.identifier == Segues.ShowSingleImage {
             guard let destVC = segue.destination as? SinglePhotoVC else { return }
             
             if let selectedImage = selectedImage {
@@ -92,7 +92,7 @@ extension PhotoGalleryVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let image = viewModel.images[indexPath.item].image {
             self.selectedImage = image
-            performSegue(withIdentifier: "ShowSingleImage", sender: self)
+            performSegue(withIdentifier: Segues.ShowSingleImage, sender: self)
         }
     }
 }

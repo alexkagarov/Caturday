@@ -17,6 +17,11 @@ struct URLs {
 
 struct Segues {
     static let ToSingleBreed = "ToSingleBreedSegue"
+    
+    static let ShowSingleImage = "ShowSingleImageSegue"
+    
+    static let StartSingleQuiz = "StartSingleQuizSegue"
+    static let ShowStatsPopUp = "ShowStatsPopUpSegue"
 }
 
 struct UDKeys {

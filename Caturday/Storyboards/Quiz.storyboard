@@ -47,7 +47,7 @@
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="4Ia-pH-FgQ">
                                 <rect key="frame" x="16" y="112" width="343" height="459"/>
-                                <mutableString key="text">Tap \"Start Quiz\" button (when it is active) to try guessing the cat breed, based on its photo.\nYou can choose from 4 (four) different options, only ONE of which is correct. Choose wisely!\nIf the image is bad or you are unsure about your answer, you can tap \"Request another image\" button below the cat's photo. The answer will remain the same.\nAfter your first game your stats will be available by tapping \"Check my stats\" button on the bottom of this screen. The pop up with stats will appear immediately.\nIf you are unhappy with your stats, you can tap \"Clear user statistics\" button in stats pop up. Be careful, this action can't be undone!</mutableString>
+                                <string key="text">Tap \"Start Quiz\" button (when it is active) to try guessing the cat breed, based on its photo.\nYou can choose from 4 (four) different options, only ONE of which is correct. Choose wisely!\nIf the image is bad or you are unsure about your answer, you can tap \"Request another image\" button below the cat's photo. The answer will remain the same.\nAfter your first game your stats will be available by tapping \"Check my stats\" button on the bottom of this screen. The pop up with stats will appear immediately.\nIf you are unhappy with your stats, you can tap \"Clear user statistics\" button in stats pop up. Be careful, this action can't be undone!</string>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@
                         <outlet property="checkMyStatsBtn" destination="dCd-7h-Jha" id="KtI-cd-sdc"/>
                         <outlet property="guideLbl" destination="4Ia-pH-FgQ" id="kfU-gG-EiS"/>
                         <outlet property="startQuizBtn" destination="cvJ-UY-w1k" id="nmm-1e-10w"/>
-                        <segue destination="EXL-uX-yre" kind="presentation" identifier="StartQuizSegue" id="Oif-W9-Nb8"/>
+                        <segue destination="EXL-uX-yre" kind="presentation" identifier="StartSingleQuizSegue" id="Oif-W9-Nb8"/>
                         <segue destination="9wM-dt-mh7" kind="presentation" identifier="ShowStatsPopUpSegue" id="uqc-Gu-1EC"/>
                     </connections>
                 </viewController>
@@ -215,7 +215,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can you identify the cat breed by its random photo?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dfj-67-FnE">
-                                <rect key="frame" x="16" y="16" width="318" height="57.5"/>
+                                <rect key="frame" x="16" y="16" width="314" height="57.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" name="kinda-black-to-kinda-white"/>
                                 <nil key="highlightedColor"/>
@@ -223,7 +223,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uk-0A-Slc" userLabel="Cat Image View">
                                 <rect key="frame" x="16" y="89.5" width="343" height="299"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qyx-gP-7z4">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qyx-gP-7z4">
                                         <rect key="frame" x="212" y="268" width="131" height="27"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="tintColor" name="kinda-black-to-kinda-white"/>
@@ -232,7 +232,7 @@
                                             <action selector="onLoadAnotherImageTapped:" destination="EXL-uX-yre" eventType="touchUpInside" id="LBE-8L-h2c"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="1800x1200_cat_relaxing_on_patio_other" translatesAutoresizingMaskIntoConstraints="NO" id="8fy-BE-bnU">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fy-BE-bnU">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="268"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -314,7 +314,7 @@
                             <constraint firstItem="u1b-oY-KCG" firstAttribute="height" secondItem="qPU-TD-jHZ" secondAttribute="height" multiplier="0.35" id="ADn-sT-vWq"/>
                             <constraint firstItem="u1b-oY-KCG" firstAttribute="leading" secondItem="kSH-yg-OJm" secondAttribute="leading" constant="16" id="J11-Sg-Aab"/>
                             <constraint firstItem="9uk-0A-Slc" firstAttribute="top" secondItem="Dfj-67-FnE" secondAttribute="bottom" constant="16" id="J1c-YK-t7r"/>
-                            <constraint firstItem="AJq-HY-uX0" firstAttribute="leading" secondItem="Dfj-67-FnE" secondAttribute="trailing" id="JpY-9p-PLl"/>
+                            <constraint firstItem="AJq-HY-uX0" firstAttribute="leading" secondItem="Dfj-67-FnE" secondAttribute="trailing" constant="4" id="JpY-9p-PLl"/>
                             <constraint firstItem="kSH-yg-OJm" firstAttribute="trailing" secondItem="AJq-HY-uX0" secondAttribute="trailing" constant="16" id="Kw1-gE-suu"/>
                             <constraint firstItem="Dfj-67-FnE" firstAttribute="top" secondItem="kSH-yg-OJm" secondAttribute="top" constant="16" id="dBa-cZ-Sde"/>
                             <constraint firstItem="Dfj-67-FnE" firstAttribute="leading" secondItem="kSH-yg-OJm" secondAttribute="leading" constant="16" id="prG-IQ-ALR"/>
@@ -327,6 +327,7 @@
                         <outlet property="option2View" destination="pPa-xA-42Y" id="xwU-wk-YIx"/>
                         <outlet property="option3View" destination="X3m-mW-GSw" id="hxE-h7-azf"/>
                         <outlet property="option4View" destination="pBi-7f-DDr" id="B4a-Cp-ONy"/>
+                        <outlet property="quizQuestionLabel" destination="Dfj-67-FnE" id="ivv-D7-fNb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kss-TJ-FZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -353,7 +354,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1800x1200_cat_relaxing_on_patio_other" width="1800" height="1200"/>
         <image name="close-button-png" width="980" height="980"/>
         <namedColor name="kinda-black-to-kinda-white">
             <color red="0.14000000059604645" green="0.14000000059604645" blue="0.14000000059604645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
