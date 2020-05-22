@@ -112,6 +112,8 @@
 		1F520D2A2472F1DC007FC58C /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				44FFE126246B329400BD34C4 /* ImageModel.swift */,
+				44FFE115246B073300BD34C4 /* BreedModel.swift */,
 				44FFE120246B282B00BD34C4 /* SingleBreedModel.swift */,
 				44FFE122246B2DC100BD34C4 /* BoolBreedCategory.swift */,
 				44FFE124246B2E2E00BD34C4 /* FloatBreedCategory.swift */,
@@ -153,13 +155,13 @@
 			path = "Single Quiz";
 			sourceTree = "<group>";
 		};
-		1F9B67042476F4C0001A2296 /* Views */ = {
+		1F9B67042476F4C0001A2296 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
 				1F9B67052476F593001A2296 /* QuizOptionView.swift */,
 				1F9B67072476F5D4001A2296 /* QuizOptionView.xib */,
 			);
-			path = Views;
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		1F9E79F82477FB3C004E59B7 /* Quiz Stats */ = {
@@ -169,6 +171,14 @@
 				1F9E79F92477FB59004E59B7 /* QuizStatsPopupVM.swift */,
 			);
 			path = "Quiz Stats";
+			sourceTree = "<group>";
+		};
+		1F9E79FB24784A3A004E59B7 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				1F520D282471B83F007FC58C /* CatCollectionImageModel.swift */,
+			);
+			path = Gallery;
 			sourceTree = "<group>";
 		};
 		441C2CC62468758E00D953F7 /* Tab Bar Scene */ = {
@@ -211,7 +221,7 @@
 				444F8AEB24670C91005112F5 /* Support Files */,
 				444F8AED24670CAD005112F5 /* Managers */,
 				444F8AEC24670CA6005112F5 /* Models */,
-				1F9B67042476F4C0001A2296 /* Views */,
+				1F9B67042476F4C0001A2296 /* Custom Views */,
 				441C2CD324687E0300D953F7 /* Cells */,
 				444F8AEA24670C81005112F5 /* Scenes */,
 				444F8AE924670C6D005112F5 /* Storyboards */,
@@ -258,11 +268,9 @@
 		444F8AEC24670CA6005112F5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1F9B66FB2476A2A1001A2296 /* Quiz */,
 				1F520D2A2472F1DC007FC58C /* Catalog */,
-				44FFE126246B329400BD34C4 /* ImageModel.swift */,
-				44FFE115246B073300BD34C4 /* BreedModel.swift */,
-				1F520D282471B83F007FC58C /* CatCollectionImageModel.swift */,
+				1F9E79FB24784A3A004E59B7 /* Gallery */,
+				1F9B66FB2476A2A1001A2296 /* Quiz */,
 			);
 			path = Models;
 			sourceTree = "<group>";

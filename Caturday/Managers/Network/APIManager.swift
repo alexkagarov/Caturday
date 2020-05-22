@@ -81,6 +81,7 @@ class APIManager {
         }.resume()
     }
     
+    // the catapi offers sending requests for images in different ways, this function receives image JSON object as a response
     func sendRequestForImage(urlString: String, success: ((Data)->Void)?, failure: ((Error)->Void)?) {
         guard let url = URL(string: urlString) else { return }
         
@@ -108,6 +109,7 @@ class APIManager {
         }.resume()
     }
     
+    // the catapi offers sending requests for images in different ways, this function receives direct image as a response. BUT only one image, so it is not suitable for loading array of images
     func sendRequestForSingleBreedImage(urlString: String, breedID: String, success: ((UIImage)->Void)?, failure: ((Error)->Void)?) {
         let session = URLSession.shared
         
@@ -142,6 +144,8 @@ class APIManager {
     }
 }
 
+// MARK: - Network functionality wrappers
+// MARK: Functions that return batches of elements, suitable for requests with pagination
 extension APIManager {
     func getItems(type: String, limit: Int, success: ((Data, Int)->Void)?, failure: ((String)->Void)?) {
         let url = URLs.Server + type
@@ -164,6 +168,7 @@ extension APIManager {
     }
 }
 
+// MARK: Images related functions. First two are request(query)->url(s)->image and the third one is request(query)->image(single image for one query request)
 extension APIManager {
     func getImage(urlString: String, success: ((UIImage)->Void)?) {
         sendRequestForImage(urlString: urlString, success: { (data) in

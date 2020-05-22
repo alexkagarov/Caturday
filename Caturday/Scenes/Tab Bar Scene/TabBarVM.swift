@@ -9,7 +9,7 @@
 import Foundation
 
 protocol TabBarVMProtocol {
-    
+    var names: [String] { get set }
 }
 
 class TabBarVM: TabBarVMProtocol {

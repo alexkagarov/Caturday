@@ -18,7 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCd-7h-Jha">
-                                <rect key="frame" x="16" y="637" width="343" height="30"/>
+                                <rect key="frame" x="16" y="635" width="343" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Check my stats">
                                     <color key="titleColor" name="kinda-black-to-kinda-white"/>
                                 </state>
@@ -100,7 +101,7 @@
                                 <blurEffect style="systemChromeMaterial"/>
                             </visualEffectView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WMR-OR-SmJ" userLabel="Popup View">
-                                <rect key="frame" x="36" y="205" width="303" height="257.5"/>
+                                <rect key="frame" x="36" y="218" width="303" height="231"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wkp-U3-P07" userLabel="Close Button">
                                         <rect key="frame" x="275" y="8" width="20" height="20"/>
@@ -121,31 +122,31 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games Won" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92Y-5D-YvV">
-                                        <rect key="frame" x="16" y="64" width="271" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <rect key="frame" x="16" y="64" width="271" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games Played" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pa1-xR-XWG">
-                                        <rect key="frame" x="16" y="147.5" width="271" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <rect key="frame" x="16" y="126.5" width="271" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <progressView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mhq-60-aLW">
-                                        <rect key="frame" x="16" y="183.5" width="271" height="10"/>
+                                        <rect key="frame" x="16" y="157" width="271" height="10"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="bZ8-43-gWx"/>
                                         </constraints>
                                     </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8F9-E1-9J6">
-                                        <rect key="frame" x="16" y="99.5" width="271" height="48"/>
+                                        <rect key="frame" x="16" y="78.5" width="271" height="48"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="40"/>
                                         <color key="textColor" name="kinda-black-to-kinda-white"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBh-JJ-cGl">
-                                        <rect key="frame" x="16" y="209.5" width="271" height="32"/>
+                                        <rect key="frame" x="16" y="183" width="271" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Clear user statistics">
                                             <color key="titleColor" name="kinda-black-to-kinda-white"/>
@@ -169,7 +170,7 @@
                                     <constraint firstItem="Mhq-60-aLW" firstAttribute="leading" secondItem="WMR-OR-SmJ" secondAttribute="leading" constant="16" id="Sn2-JH-def"/>
                                     <constraint firstItem="xFq-oe-NJA" firstAttribute="leading" secondItem="WMR-OR-SmJ" secondAttribute="leading" constant="16" id="VO2-iO-Top"/>
                                     <constraint firstAttribute="bottom" secondItem="zBh-JJ-cGl" secondAttribute="bottom" constant="16" id="X4u-dX-nmx"/>
-                                    <constraint firstItem="8F9-E1-9J6" firstAttribute="top" secondItem="92Y-5D-YvV" secondAttribute="bottom" constant="16" id="Xwt-O3-SrQ"/>
+                                    <constraint firstItem="8F9-E1-9J6" firstAttribute="top" secondItem="92Y-5D-YvV" secondAttribute="bottom" id="Xwt-O3-SrQ"/>
                                     <constraint firstItem="Pa1-xR-XWG" firstAttribute="top" secondItem="8F9-E1-9J6" secondAttribute="bottom" id="aqw-pD-LpN"/>
                                     <constraint firstItem="zBh-JJ-cGl" firstAttribute="top" secondItem="Mhq-60-aLW" secondAttribute="bottom" constant="16" id="c4C-dI-ZUv"/>
                                     <constraint firstItem="zBh-JJ-cGl" firstAttribute="leading" secondItem="WMR-OR-SmJ" secondAttribute="leading" constant="16" id="nMj-NU-niH"/>
