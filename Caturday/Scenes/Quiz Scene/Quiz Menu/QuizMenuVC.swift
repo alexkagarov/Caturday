@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - Main Quiz VC protocol delegate - to check the stats state after dismissing of other quiz related VCs
 protocol QuizMenuVCDelegate: class {
     func checkUserStats()
 }
@@ -107,6 +108,7 @@ class QuizMenuVC: UIViewController {
     }
 }
 
+// MARK: - Main Quiz VC protocol delegate - to check the stats state after dismissing of other quiz related VCs
 extension QuizMenuVC: QuizMenuVCDelegate {
     func checkUserStats() {
         self.checkStats()

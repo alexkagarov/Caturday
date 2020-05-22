@@ -10,16 +10,20 @@ import UIKit
 
 class SinglePhotoVC: UIViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet weak var imageView: UIImageView!
     
+    // MARK: - Variables
     var viewModel: SinglePhotoVM!
     
+    // MARK: - VC Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         imageView.image = viewModel.image
     }
     
+    // MARK: - IBActions
     @IBAction func onCloseButtonTapped(_ sender: UIButton?) {
         self.dismiss(animated: true, completion: nil)
     }

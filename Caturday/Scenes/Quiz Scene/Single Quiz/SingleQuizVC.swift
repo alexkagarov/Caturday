@@ -58,6 +58,26 @@ class SingleQuizVC: UIViewController {
         }
     }
     
+    @objc private func customDismiss() {
+        delegate?.checkUserStats()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - IBActions
+    @IBAction func onLoadAnotherImageTapped(_ sender: UIButton?) {
+        viewModel.getImageForBreed(breedID: viewModel.quizModel.answerID, success: { (image) in
+            DispatchQueue.main.async {
+                self.breedImage.image = image
+            }
+        })
+    }
+    
+    @IBAction func onCloseTapped(_ sender: UIButton?) {
+        customDismiss()
+    }
+}
+
+extension SingleQuizVC {
     private func onAnswerTapped(_ sender: QuizOptionView) {
         var answerIsCorrect = true
         
@@ -82,24 +102,6 @@ class SingleQuizVC: UIViewController {
         
         defaults.set(defaults.integer(forKey: UDKeys.AllGames)+1, forKey: UDKeys.AllGames)
         
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(customDismiss), userInfo: nil, repeats: false)
-    }
-    
-    @objc private func customDismiss() {
-        delegate?.checkUserStats()
-        dismiss(animated: true, completion: nil)
-    }
-    
-    // MARK: - IBActions
-    @IBAction func onLoadAnotherImageTapped(_ sender: UIButton?) {
-        viewModel.getImageForBreed(breedID: viewModel.quizModel.answerID, success: { (image) in
-            DispatchQueue.main.async {
-                self.breedImage.image = image
-            }
-        })
-    }
-    
-    @IBAction func onCloseTapped(_ sender: UIButton?) {
-        customDismiss()
+        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(customDismiss), userInfo: nil, repeats: false)
     }
 }
